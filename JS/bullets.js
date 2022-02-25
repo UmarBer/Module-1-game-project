@@ -1,21 +1,20 @@
-class Bullet {
-  constructor(x, y, speed) {
-    //this.game = gameInstance;
-    this.ctx = canvasElement.getContext('2d');
+class Bullets {
+  constructor(gameInstance, x, y) {
+    this.game = gameInstance;
     this.x = x;
     this.y = y;
-    this.width = 20;
-    this.height = 5;
-    this.speed = speed;
+    this.width = 5;
+    this.height = 15;
   }
+
+  runLogic() {
+    this.y -= 1;
+  }
+
   draw() {
-    this.ctx.save();
-    this.ctx.filStyle = 'black';
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
-    this.ctx.restore();
+    this.game.ctx.save();
+    this.game.ctx.fillStyle = 'yellow';
+    this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.game.ctx.restore();
   }
 }
-addEventListener('click', (event) => {
-  const bullet = new Bullet(event.clientX, event.clientY, null);
-  bullet.draw();
-});

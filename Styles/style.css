@@ -1,14 +1,21 @@
 html,
 body {
   height: 100%;
-  background-color: grey;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-image: url('/Images/apocalypse-background.jpg');
+  background-position: initial;
+  background-size: cover;
 }
-canvas {
-  background-color: black;
+
+background-image {
+  object-fit: initial;
 }
 body {
   margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+canvas {
+  background-color: darkgray;
 }
