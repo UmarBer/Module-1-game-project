@@ -15,7 +15,24 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0;
+  font-family: sans-serif;
+}
+.screen {
+  background-color: darkgrey;
+  width: 800px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 canvas {
-  background-color: darkgray;
+}
+
+button {
+  font: inherit;
+  color: red;
+  background-color: black;
+  border: 0;
+  padding: 1em;
 }

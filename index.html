@@ -8,7 +8,19 @@
     <link href="/Styles/style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <canvas width="800" height="800"></canvas>
+    <div class="screen" id="start-screen">
+      <h1>Iron Zombie</h1>
+      <button>Start Game</button>
+    </div>
+    <div class="screen" id="playing-screen" style="display: none">
+      <canvas width="800" height="800"></canvas>
+    </div>
+    <div class="screen" id="game-over-screen" style="display: none">
+      <h3>You're Dead</h3>
+      <button>Try Again</button>
+    </div>
+
+    <script src="/JS/game-element.js"></script>
     <script src="/JS/zombie.js"></script>
     <script src="/JS/player.js"></script>
     <script src="/JS/game.js"></script>

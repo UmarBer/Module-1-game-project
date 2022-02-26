@@ -11,7 +11,7 @@ class Zombie {
     this.height = 50;
     this.frame = 0;
     this.gameFrame = 0;
-    this.staggerFrames = 5;
+    this.staggerFrames = 20;
   }
 
   checkIntersection(element) {
@@ -44,9 +44,12 @@ class Zombie {
       this.height
     );
 
-    if (this.gameFrame % this.staggerFrames == 0) {
-      if (this.frame < 5) this.frame++;
-      else this.frame = 0;
+    if (this.gameFrame % this.staggerFrames === 0) {
+      if (this.frame < 5) {
+        this.frame++;
+      } else {
+        this.frame = 0;
+      }
     }
 
     this.gameFrame++;
