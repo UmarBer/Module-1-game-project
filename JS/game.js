@@ -18,10 +18,17 @@ class Game {
     this.zombies = [];
     this.bullets = [];
     this.keysPressed = [];
-
+    this.music();
     this.displayScreen('playing');
 
     this.loop();
+  }
+
+  music() {
+    const backgroundMusic = new Audio(
+      '/Music/Storm(loop) - dark - heavy - lurking.wav'
+    );
+    backgroundMusic.play();
   }
 
   displayScreen(name) {
@@ -59,11 +66,6 @@ class Game {
           this.bulletFire();
           break;
       }
-      if (this.player.x + this.player.width >= this.canvas.width - 1)
-        this.player.x -= 10;
-      else if (this.player.x <= 5) this.player.x += 10;
-      else if (this.player.y + this.player.height >= this.canvas.height)
-        this.player.y -= 10;
     });
   }
 
@@ -73,7 +75,7 @@ class Game {
   }
 
   createZombies() {
-    const zombieSpeed = Math.random();
+    const zombieSpeed = Math.random() + 0.3;
     let zombieY = Math.random() * 50;
     let zombieX = Math.random() * this.canvas.width - 50;
     const zombie = new Zombie(this, zombieX, zombieY, zombieSpeed);
@@ -85,13 +87,13 @@ class Game {
     console.log(this.zombies.length);
   }
   createZombies2() {
-    const zombieSpeed = Math.random() + 0.3;
+    const zombieSpeed = Math.random() + 2.7;
     let zombieY = Math.random() * 50;
     let zombieX = Math.random() * this.canvas.width - 50;
     const zombie = new Zombie(this, zombieX, zombieY, zombieSpeed);
     if (zombieX + 30 >= this.canvas.width - 1) zombieX -= 30;
     else if (zombieX <= 5) zombieX += 30;
-    if (this.zombies.length <= 9) {
+    if (this.zombies.length <= 19) {
       this.zombies.push(zombie);
     }
     console.log(this.zombies.length);
@@ -141,7 +143,7 @@ class Game {
       }
     }
     if (this.life <= 0) this.lose();
-    //if ((this.kills = 10)) this.level2;
+    if (this.kills >= 10) this.level2();
   }
 
   level2() {

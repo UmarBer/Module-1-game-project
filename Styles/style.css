@@ -1,9 +1,10 @@
 html,
 body {
   height: 100%;
-  background-image: url('/Images/apocalypse-background.jpg');
+  background-image: url('/Images/creepy-alley.jpeg');
   background-position: initial;
-  background-size: cover;
+  background-size: auto;
+  background-position-x: center;
 }
 
 background-image {
@@ -18,7 +19,7 @@ body {
   font-family: sans-serif;
 }
 .screen {
-  background-color: darkgrey;
+  background-color: transparent;
   width: 800px;
   height: 800px;
   display: flex;

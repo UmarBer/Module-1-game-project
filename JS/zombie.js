@@ -1,5 +1,6 @@
 const zombieImage = new Image();
 zombieImage.src = '/Images/Zombie/spritesheet.png';
+const clamp2 = (n, min, max) => Math.min(Math.max(n, min), max);
 
 class Zombie {
   constructor(gameInstance, x, y, speed) {
@@ -25,6 +26,7 @@ class Zombie {
 
   runLogic() {
     this.y += this.speed;
+    this.x = clamp2(this.x, 0, this.game.canvas.width - this.width);
   }
 
   draw() {

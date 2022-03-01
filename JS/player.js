@@ -1,8 +1,17 @@
+const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+
+const playerImage = new Image();
+playerImage.src = '/Images/spritesheet-robotic.png';
+
 class Player extends GameElement {
   constructor(gameInstance) {
     super(gameInstance, 350, 750, 30, 30);
-
+    this.frame = 0;
+    this.gameFrame = 0;
+    this.staggerFrames = 10;
     this.friction = 0.15;
+    this.width = 50;
+    this.height = 50;
   }
 
   runLogic() {
@@ -39,12 +48,35 @@ class Player extends GameElement {
       accelerationX: newAccelerationX,
       accelerationY: newAccelerationY
     });
+    this.x = clamp(this.x, 0, this.game.canvas.width - 30);
+    this.y = clamp(this.y, 0, this.game.canvas.height - 30);
   }
 
   draw() {
     this.game.ctx.save();
-    this.game.ctx.fillStyle = 'blue';
-    this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
+    //this.game.ctx.fillStyle = 'blue';
+    //this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.game.ctx.drawImage(
+      playerImage,
+      this.frame * 180,
+      0,
+      320,
+      320,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );
+
+    if (this.gameFrame % this.staggerFrames === 0) {
+      if (this.frame < 6) {
+        this.frame++;
+      } else {
+        this.frame = 0;
+      }
+    }
+
+    this.gameFrame++;
     this.game.ctx.restore();
   }
 }
