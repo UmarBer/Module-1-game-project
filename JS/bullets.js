@@ -3,8 +3,8 @@ class Bullets {
     this.game = gameInstance;
     this.x = x;
     this.y = y;
-    this.width = 5;
-    this.height = 15;
+    this.width = 6;
+    this.height = 12.5;
   }
 
   runLogic() {

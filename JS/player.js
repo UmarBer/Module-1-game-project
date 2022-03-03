@@ -48,28 +48,28 @@ class Player extends GameElement {
       accelerationX: newAccelerationX,
       accelerationY: newAccelerationY
     });
-    this.x = clamp(this.x, 0, this.game.canvas.width - 30);
-    this.y = clamp(this.y, 0, this.game.canvas.height - 30);
+    this.x = clamp(this.x, 0, this.game.canvas.width - 85);
+    this.y = clamp(this.y, 0, this.game.canvas.height - 85);
   }
 
   draw() {
     this.game.ctx.save();
-    //this.game.ctx.fillStyle = 'blue';
-    //this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
+    // this.game.ctx.fillStyle = 'blue';
+    // this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
     this.game.ctx.drawImage(
       playerImage,
-      this.frame * 180,
+      this.frame * 320,
       0,
       320,
       320,
-      this.x,
-      this.y,
-      this.width,
-      this.height
+      this.x - 35 / 2,
+      this.y - 35 / 2,
+      this.width + 35,
+      this.height + 35
     );
 
     if (this.gameFrame % this.staggerFrames === 0) {
-      if (this.frame < 6) {
+      if (this.frame < 5) {
         this.frame++;
       } else {
         this.frame = 0;

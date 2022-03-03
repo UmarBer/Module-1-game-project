@@ -21,3 +21,10 @@ const endButton = endScreenElement.querySelector('button');
 endButton.addEventListener('click', () => {
   game.start();
 });
+
+const backgroundMusic = new Audio(
+  '/Music/Storm(loop) - dark - heavy - lurking.wav'
+);
+const gameOverMusic = new Audio('/Music/dead-screen.wav');
+const zombieSound = new Audio('/Music/zombie-dead.wav');
+const gunshotSound = new Audio('/Music/gunshot.wav');
