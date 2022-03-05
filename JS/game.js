@@ -41,6 +41,7 @@ class Game {
     gameOverMusic.play();
     this.running = false;
     this.displayScreen('end');
+    this.score();
   }
 
   enableControls() {
@@ -73,11 +74,11 @@ class Game {
   bulletFire() {
     const bulletX = this.player.x + this.player.width / 2 - 6 / 2 + 7;
     const bullet = new Bullets(this, bulletX, this.player.y);
-    if (this.bullets.length < 10) this.bullets.push(bullet);
+    if (this.bullets.length < 12) this.bullets.push(bullet);
   }
 
   createZombies() {
-    let zombieSpeed = 0.3 + Math.random() * (1 + this.kills / 10);
+    let zombieSpeed = 0.4 + Math.random() * (1 + this.kills / 8);
     let zombieY = Math.random() * 50;
     let zombieX = Math.random() * this.canvas.width - 50;
     const zombie = new Zombie(this, zombieX, zombieY, zombieSpeed);
@@ -88,19 +89,6 @@ class Game {
     }
     console.log(this.zombies.length);
   }
-
-  /*createZombies2() {
-    let zombieSpeed2 = Math.random() + 10.7;
-    let zombieY = Math.random() * 50;
-    let zombieX = Math.random() * this.canvas.width - 50;
-    const zombie = new Zombie(this, zombieX, zombieY, zombieSpeed2);
-    if (zombieX + 30 >= this.canvas.width - 1) zombieX -= 30;
-    else if (zombieX <= 5) zombieX += 30;
-    if (this.zombies.length <= 19) {
-      this.zombies.push(zombie);
-    }
-    console.log(this.zombies.length);
-  }*/
 
   loop() {
     window.requestAnimationFrame(() => {
@@ -113,9 +101,8 @@ class Game {
   }
 
   runLogic() {
-    //if (this.kills <= 4) {
     this.player.runLogic();
-    if (Math.random() < 0.0035) {
+    if (Math.random() < 0.005) {
       this.createZombies();
     }
     for (const zombie of this.zombies) {
@@ -126,6 +113,11 @@ class Game {
         const zombieIndex = this.zombies.indexOf(zombie);
         this.zombies.splice(zombieIndex, 1);
         this.life -= 10;
+      }
+      if (intersectionHappening) {
+        backgroundMusic.pause();
+        hurtSound.play();
+        backgroundMusic.play();
       }
     }
     for (const bullet of this.bullets) {
@@ -150,56 +142,19 @@ class Game {
         this.bullets.splice(bulletIndex, 1);
       }
     }
-    //} //else if (this.kills >= 5) this.level2.Logic();
+
     if (this.life <= 0) this.lose();
   }
 
-  /*level2Logic() {
-    console.log('Level2');
-    this.player.runLogic();
-    if (Math.random() < 0.7) {
-      this.createZombies2();
-      console.log('Level2Zombies');
-    }
-    for (const zombie of this.zombies) {
-      zombie.runLogic();
-      const intersectionHappening = zombie.checkIntersection(this.player);
-      const zombieOut = zombie.y >= this.canvas.height;
-      if (intersectionHappening || zombieOut) {
-        const zombieIndex = this.zombies.indexOf(zombie);
-        this.zombies.splice(zombieIndex, 1);
-        this.life -= 10;
-      }
-    }
-
-    for (const bullet of this.bullets) {
-      bullet.runLogic();
-      for (const zombie of this.zombies) {
-        const intersectionHappening = zombie.checkIntersection(bullet);
-        if (intersectionHappening) this.kills += 1;
-        if (intersectionHappening) {
-          const zombieIndex = this.zombies.indexOf(zombie);
-          this.zombies.splice(zombieIndex, 1);
-          const bulletIndex = this.bullets.indexOf(bullet);
-          this.bullets.splice(bulletIndex, 1);
-        }
-      }
-      if (bullet.y - bullet.height <= 0) {
-        const bulletIndex = this.bullets.indexOf(bullet);
-        this.bullets.splice(bulletIndex, 1);
-      }
-    }
-  }*/
-
   drawLife() {
     this.ctx.fillStyle = 'red';
-    this.ctx.font = 'bold 20px serif';
+    this.ctx.font = 'bold 25px Creepster';
     this.ctx.fillText(`Life points remaining: ${this.life}`, 50, 50);
   }
 
   drawKills() {
     this.ctx.fillStyle = 'purple';
-    this.ctx.font = 'bold 20px serif';
+    this.ctx.font = 'bold 25px Creepster';
     this.ctx.fillText(`Kills: ${this.kills}`, 700, 50);
   }
 

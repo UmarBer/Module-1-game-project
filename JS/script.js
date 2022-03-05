@@ -28,3 +28,4 @@ const backgroundMusic = new Audio(
 const gameOverMusic = new Audio('/Music/dead-screen.wav');
 const zombieSound = new Audio('/Music/zombie-dead.wav');
 const gunshotSound = new Audio('/Music/gunshot.wav');
+const hurtSound = new Audio('/Music/player-hurt.wav');

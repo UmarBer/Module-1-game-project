@@ -4,19 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width" />
-    <title>Game Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Creepster&display=swap"
+      rel="stylesheet"
+    />
+    <title>Iron Zombie</title>
     <link href="/Styles/style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="screen" id="start-screen">
-      <h1>Iron Zombie</h1>
+      <h1 style="font-family: 'Creepster', cursive">Iron Zombie</h1>
+      <div class="explanation">
+        <p>
+          Try to survive horde after horde of IronZombies 🧟‍♂️ using only your
+          gun, but beware, the more IronZombies you kill the faster they become.
+        </p>
+
+        <p>
+          Use the arrows ⬅️ ➡️ ⬇️ ⬆️ to move the player and the space button to
+          shoot .
+        </p>
+
+        <p>
+          Keep in mind that after shooting 12 bullets you will need a few
+          seconds to reload, during that time you are completely vulnerable!
+        </p>
+      </div>
       <button>Start Game</button>
     </div>
     <div class="screen" id="playing-screen" style="display: none">
       <canvas width="800" height="800"></canvas>
     </div>
     <div class="screen" id="game-over-screen" style="display: none">
-      <button>Try Again</button>
+      <button style="font-family: 'Creepster', cursive">Try Again</button>
     </div>
 
     <script src="/JS/game-element.js"></script>

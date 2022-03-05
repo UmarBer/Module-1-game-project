@@ -5,6 +5,7 @@ body {
   background-position: initial;
   background-size: auto;
   background-position-x: center;
+  font-family: 'Creepster', cursive;
 }
 
 background-image {
@@ -16,15 +17,20 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0;
-  font-family: sans-serif;
 }
+
 h1 {
+  font-family: 'Creepster', cursive;
+  font-size: 60px;
   color: red;
   background-color: transparent;
-  padding: 2em;
+  padding: 0.25em;
   font-family: monospace;
+  display: flex;
+  justify-content: center;
 }
 .screen {
+  font-family: 'Creepster', cursive;
   background-color: transparent;
   width: 800px;
   height: 800px;
@@ -34,13 +40,14 @@ h1 {
   align-items: center;
 }
 canvas {
+  border: 2px #e60505 solid;
 }
 
 button {
-  font-family: monospace;
-  font-size: 20px;
+  font-family: 'Creepster', cursive;
+  font-size: 30px;
   color: red;
-  background-color: black;
+  background-color: transparent;
   border: 0;
   padding: 1em;
 }
@@ -48,4 +55,27 @@ button {
   background-image: url('/Images/dead-background.jpeg');
   background-size: contain;
   background-position-x: center;
+}
+
+#start-screen {
+  display: flex;
+  background-image: url('/Images/start-background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.explanation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  text-align: left;
+  font-family: inherit;
+  font-size: 25px;
+  color: red;
+}
+.explanation,
+p {
+  padding: 0.5em;
+  align-items: center;
 }
